@@ -1,6 +1,6 @@
 **[ChooseALicense.com](https://choosealicense.com)** aims to provide **accurate**, **non-judgmental**, and **understandable** information about popular **open source licenses** in order to **help people make informed decisions** about the projects they start, maintain, contribute to, and use.
 
-[![Build Status](https://travis-ci.org/github/choosealicense.com.svg?branch=gh-pages)](https://travis-ci.org/github/choosealicense.com)
+[![](https://github.com/github/choosealicense.com/workflows/Build%20and%20Test/badge.svg)](https://github.com/github/choosealicense.com/actions?query=workflow%3ABuild%20and%20Test)
 
 We catalog [select](CONTRIBUTING.md#adding-a-license) open source licenses with a [Jekyll collection](https://jekyllrb.com/docs/collections/) (in `_licenses`). The catalog is used to render [ChooseALicense.com](https://choosealicense.com) and is regularly vendored into [Licensee](https://github.com/licensee/licensee), which GitHub uses to provide a [license chooser and license detection](https://help.github.com/articles/adding-a-license-to-a-repository/), a [licenses API](https://developer.github.com/v3/licenses/), and to [display license descriptions and metadata](https://github.com/blog/2335-open-source-license-descriptions-and-metadata).
 
@@ -12,7 +12,24 @@ We catalog [select](CONTRIBUTING.md#adding-a-license) open source licenses with 
 * Collaborate with and reinforce other licensing best practices and standards projects.
 * Not comprehensive. Seems like an odd goal, but there are a bajillion licenses out there. We're going to have to filter that down to a small list of those that matter.
 
-## Run It On Your Machine
+## Run it on your machine
+
+### Managing Dependencies
+
+It may be the case that your system doesn't have the required dependencies. You will need `cmake` and `make` installed on your computer. 
+
+For MacOS, use Homebrew to update your dependencies (install Homebrew from <https://brew.sh/>):
+```bash
+brew install make cmake
+```
+For Linux/Ubuntu, use the `apt-get` tool to install the dependencies:
+```bash
+sudo apt-get install make cmake
+```
+
+### Installing and Running the tool
+
+Note that the third command (`./script/bootstrap`) may require you to use `sudo` access for installation. Add `sudo` right before the third command, if need be, but don't use root access.
 
 ```bash
 git clone https://github.com/github/choosealicense.com.git
@@ -37,7 +54,7 @@ Licenses sit in the `/_licenses` folder. Each license has YAML front matter desc
 * `spdx-id` - Short identifier specified by https://spdx.org/licenses/
 * `description` - A human-readable description of the license
 * `how` - Instructions on how to implement the license
-* `using` - A list of 3 notable projects using the license with straightforward LICENSE files which serve as examples newcomers can follow and that can be detected by [licensee](https://github.com/licensee/licensee) in the form of `project_name: license_file_url`
+* `using` - A map of 3 notable projects using the license with straightforward LICENSE files which serve as examples newcomers can follow and that can be detected by [licensee](https://github.com/licensee/licensee) in the form of `project_name: license_file_url`
 * `permissions` - Bulleted list of permission rules
 * `conditions` - Bulleted list of condition rules
 * `limitations` - Bulleted list of limitation rules
