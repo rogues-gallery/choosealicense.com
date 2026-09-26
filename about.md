@@ -1,12 +1,11 @@
 ---
 layout: default
 permalink: /about/
-title: "What's this about?"
+title: "What’s this about?"
 ---
-
 GitHub wants to help developers choose an open source license for their source code.
 
-If you already know what you're doing and have a license you prefer to use, that's great! We're not here to change your mind. But if you are bewildered by the large number of choices, maybe we can help.
+If you already know what you’re doing and have a license you prefer to use, that’s great! We’re not here to change your mind. But if you are bewildered by the large number of choices, maybe we can help.
 
 ## Not comprehensive
 
@@ -25,8 +24,8 @@ See our [appendix](/appendix/) for a table of every license cataloged in the [ch
 
 ## Help us improve it
 
-Choosealicense.com isn't just about open source; the site itself is open source as well. See something you think could be done better? Feel free to [fork the project](https://github.com/github/choosealicense.com) on GitHub and submit a pull request. We welcome your improvements.
+Choosealicense.com isn’t just about open source; the site itself is open source as well. See something you think could be done better? Feel free to [fork the project](https://github.com/github/choosealicense.com) on GitHub and submit a pull request. We welcome your improvements.
 
 ## Disclaimer
 
-We are not lawyers. Well, most of us anyway. It is not the goal of this site to provide legal advice. The goal of this site is to provide a starting point to help you make an informed choice by providing information on popular open source licenses in a simplified fashion. If you have any questions regarding the best license for your code or any other legal issues relating to it, it's your responsibility to do further research or consult with a professional.
+We are not lawyers. Well, most of us anyway. It is not the goal of this site to provide legal advice. The goal of this site is to provide a starting point to help you make an informed choice by providing information on popular open source licenses in a simplified fashion. If you have any questions regarding the best license for your code or any other legal issues relating to it, it’s your responsibility to do further research or consult with a professional.

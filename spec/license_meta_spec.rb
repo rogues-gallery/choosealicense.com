@@ -9,7 +9,7 @@ describe 'license meta' do
 
     context "The #{license['title']} license" do
       it 'should only contain supported meta fields' do
-        extra_fields = raw_fields.keys - (meta.map { |m| m['name'] })
+        extra_fields = raw_fields.keys - meta.map { |m| m['name'] }
         expect(extra_fields).to be_empty
       end
 
@@ -19,12 +19,11 @@ describe 'license meta' do
         expect(missing).to be_empty
       end
 
-      examples = raw_fields['using'] || []
+      examples = raw_fields['using'] || {}
 
       it 'using contains 3 examples' do
         legacy = [
           'afl-3.0',
-          'agpl-3.0',
           'artistic-2.0',
           'bsd-3-clause-clear',
           'eupl-1.1',
@@ -42,19 +41,19 @@ describe 'license meta' do
       context 'licensee detects using examples' do
         slug = license['slug']
 
-        examples.each do |example|
-          example_url = example.values[0]
-
+        examples.each_value do |example_url|
           context "the #{example_url} URL" do
             let(:content)  { OpenURI.open_uri(example_url).read }
             let(:detected) { Licensee::ProjectFiles::LicenseFile.new(content, 'LICENSE').license }
 
             if example_url.start_with?('https://github.com/')
-              example_url.gsub!(%r{\Ahttps://github.com/([\w-]+/[\w\.-]+)/blob/(\S+)\z}, 'https://raw.githubusercontent.com/\1/\2')
-            elsif example_url.start_with?('https://git.savannah.gnu.org/', 'https://git.gnome.org/')
+              example_url.gsub!(%r{\Ahttps://github.com/([\w-]+/[\w.-]+)/blob/(\S+)\z}, 'https://raw.githubusercontent.com/\1/\2')
+            elsif example_url.start_with?('https://git.savannah.gnu.org/', 'https://git.gnome.org/', 'https://code.qt.io/')
               example_url.gsub!(%r{/tree/}, '/plain/')
             elsif example_url.start_with?('https://bitbucket.org/')
               example_url.gsub!(%r{/src/}, '/raw/')
+            elsif example_url.start_with?('https://gitlab.com/')
+              example_url.gsub!(%r{/blob/}, '/raw/')
             end
 
             it "is a #{slug} license" do
